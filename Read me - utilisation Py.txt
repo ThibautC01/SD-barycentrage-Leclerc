@@ -1,0 +1,57 @@
+﻿**Pré-requis**
+- Python 3.10 ou supérieur (installer depuis https://www.python.org/downloads/ ou via
+  Anaconda/Miniconda).
+- Accès en lecture aux fichiers du dossier.
+
+**Fichiers importants**
+- fichier XXX.py
+- fichiers sources de données.
+
+**Config. initiale du .venv**
+1. Installer Python 3.10+ si nécessaire.
+2. Ouvrir un terminal dans le dossier du projet.
+3. Créer un environnement virtuel - Windows (PowerShell) :
+
+      - Indication du chemin - exemple à adapter : 
+        cd "C:\Users\ThibautCHARPENAY\ETYO GROUP\ETYO - PROJETS 2025 - 25010LS SCAPARF (POW)\03 - FICHIERS ET ANALYSES\7 - APS\Phase1 - OP externe\Py - barycentrage & courbe transport\Py_TCH"
+
+      - Suppression de l'éventuel ancien env :
+        Remove-Item -Recurse -Force .venv
+
+      - Création du nouvel env : 
+        python -m venv .venv
+
+      - Autorisation d'activation de l'env :
+        Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
+      - Activation de l'env :
+        .\.venv\Scripts\Activate.ps1
+
+4. Mettre `pip` à jour :
+
+    python -m pip install --upgrade pip
+
+5. Chargement des bibliothèques dans l'environnement .py de travail - exemple à adapter : 
+
+    pip install pandas numpy matplotlib pathlib typing openpyxl pydeck streamlit
+
+**Config. XXX.py**
+6. Rentrer directement dans le code du XXX.py pour ajuster les paramètres (fichiers sources, param., etc)
+
+**Retour au .venv**
+7. Réactivation de l'env (si fermeture fenêtre du terminal) :
+
+      - Indication du chemin - exemple à adapter : 
+        cd "C:\Users\ThibautCHARPENAY\ETYO GROUP\ETYO - PROJETS 2025 - 25010LS SCAPARF (POW)\03 - FICHIERS ET ANALYSES\7 - APS\Phase1 - OP externe\Py - barycentrage & courbe transport\Py_TCH"
+      - Ré-Activation de l'env :
+        .\.venv\Scripts\Activate.ps1
+
+**Utilisation du XXX.py**
+Appel du XXX.py :
+
+- interface locale : 
+python "XXX.py"
+
+- interface StreamLit (en ligne) :
+streamlit run "XXX.py"
+
