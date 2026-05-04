@@ -611,7 +611,7 @@ def run_simulation(
 
 
 def main() -> None:
-    st.title("Simulation transport entrepots Leclerc")
+    st.title("Simulation transport entrepots Leclerc - vGroup")
     st.caption(
         "Les fichiers Excel sont lus directement dans le dossier du projet. "
         "Les lignes GIE MASCAREIGNE, GIE GIELEC et SODIPLEC sont exclues de la simulation."
