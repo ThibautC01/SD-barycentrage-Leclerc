@@ -40,6 +40,8 @@ CENTRAL_VARIABLE_COST_PER_KM = 0.0348
 STORE_FIXED_COST_PER_DELIVERY = 10
 STORE_VARIABLE_COST_PER_KM = 0.067
 
+facteur_inflation = (1+0.025)**6 # facteur inflation transport 2024-2030
+
 # ---------------------------------------------------------------------------
 # Parametres a editer avant execution
 # ---------------------------------------------------------------------------
@@ -441,7 +443,7 @@ def run_scenario(stores_df: pd.DataFrame, delivery_modes: Dict[str, str], south_
                 "Poids Sud": float(store_costs.loc[south_mask, WEIGHT_COL].sum()),
                 "Cout transport Nord": float(store_costs.loc[north_mask, "transport_cost"].sum()),
                 "Cout transport Sud": float(store_costs.loc[south_mask, "transport_cost"].sum()),
-                "Cout transport total": float(store_costs["transport_cost"].sum()),
+                "Cout transport total": float(store_costs["transport_cost"].sum())*facteur_inflation,
                 "Latitude entrepot Sud": float(south_warehouse["lat"]),
                 "Longitude entrepot Sud": float(south_warehouse["lon"]),
             }
@@ -463,7 +465,7 @@ def save_chart(results_df: pd.DataFrame, scenario_name: str) -> Path:
     output_path = OUTPUT_DIR / f"cout_transport_{safe_name}.png"
 
     plt.figure(figsize=(10, 6))
-    plt.plot(results_df["Pourcentage magasins Nord"], results_df["Cout transport total"] / 1e6, linewidth=2.5)
+    plt.plot(results_df["Pourcentage magasins Nord"], (results_df["Cout transport total"] / 1e6)*facteur_inflation, linewidth=2.5)
     plt.title(f"Cout total de transport selon % Nord\nEntrepot Sud : {scenario_name}")
     plt.xlabel("Pourcentage de magasins rattaches a Ressons-sur-Matz")
     plt.ylabel("Cout total de transport (MEUR)")
